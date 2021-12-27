@@ -15,5 +15,5 @@ jobs:
       - name: Docker push
         run: |
           docker image ls
-          docker push ${{ secrets.DOCKER_USER }}/node-app:latest
+          docker push r2d1/node-app:latest
 
