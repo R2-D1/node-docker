@@ -11,7 +11,9 @@ jobs:
       - name: Docker login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" docker login -u ${{ secrets.DOCKER_USER }} 
       - name: Docker build
-        run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --no-deps -d
+        run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
       - name: Docker push
-        run: docker push ${{ secrets.DOCKER_USER }}/node-app:latest
+        run: |
+          docker image ls
+          docker push ${{ secrets.DOCKER_USER }}/node-app:latest
 
