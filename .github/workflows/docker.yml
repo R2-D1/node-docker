@@ -11,9 +11,7 @@ jobs:
       - name: Docker build
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
       - name: Docker login
-        run: |
-         docker logout
-         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u r2d1 --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u r2d1 --password-stdin
       - name: Docker push
         run: |
           docker image ls
