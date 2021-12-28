@@ -19,9 +19,8 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app
       - name: Zip docker files
         run: |
-          tar -cf ${{ github.workspace }}/archive.tar  ${{ github.workspace }}/docker-compose.yml ${{ github.workspace }}/docker-compose.prod.yml
           cd ${{ github.workspace }}
-          ls -l
+          tar -cf archive.tar ${{ github.workspace }}/docker-compose.yml ${{ github.workspace }}/docker-compose.prod.yml
       - name: Copy config via ssh
         uses: appleboy/scp-action@master
         with:
