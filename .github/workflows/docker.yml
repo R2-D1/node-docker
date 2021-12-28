@@ -28,7 +28,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PASSPHRASE }}
-          source: ${{ github.workspace }}/archive.zip
+          source: ${{ github.workspace }}/archive.tar
           target: ${{ secrets.PROJECT_PATH }}
           strip_components: 2
           overwrite: true
