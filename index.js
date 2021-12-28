@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const {MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET} = require("./config/config");
+const {MONGO_USERNAME, MONGO_PASSWORD, MONGO_IP, MONGO_PORT} = require("./config/config");
 
-const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}`;
+console.log(MONGO_USERNAME, MONGO_PASSWORD);
+
+const mongoURL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}`;
 const app = express();
 const port = process.env.PORT || 3000;
 
