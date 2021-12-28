@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on: [push]
 
@@ -17,4 +17,14 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml build node-app
       - name: Docker push
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app
+      - name: Run docker
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_PASSPHRASE }}
+          script: |
+            cd /app
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps node-app
 
