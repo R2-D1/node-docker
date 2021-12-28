@@ -34,6 +34,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PASSPHRASE }}
           script: |
+            cd ${{ secrets.PROJECT_PATH }}
             docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app
             docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps node-app
 
