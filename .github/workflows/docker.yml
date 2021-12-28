@@ -23,7 +23,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PASSPHRASE }}
-          source: "${{ github.workspace }}/docker-compose.yml,${{ github.workspace }}/docker-compose.prod.yml,${{ github.workspace }}/Dockerfile"
+          source: "${{ github.workspace }}/docker-compose.prod.yml, ${{ github.workspace }}/docker-compose.yml, ${{ github.workspace }}/Dockerfile"
           target: ${{ secrets.PROJECT_PATH }}
           strip_components: 2
           debug: true
