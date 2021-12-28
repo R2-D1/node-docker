@@ -17,17 +17,13 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml build node-app
       - name: Docker push
         run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app
-      - name: Zip docker files
-        run: |
-          cd ${{ github.workspace }}
-          tar -cf archive.tar docker-compose.yml docker-compose.prod.yml
-      - name: Copy config via ssh
+      - name: Copy file via ssh password
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PASSPHRASE }}
-          source: ${{ github.workspace }}/archive.tar
+          source: ${{ github.workspace }}
           target: ${{ secrets.PROJECT_PATH }}
           strip_components: 2
           overwrite: true
