@@ -20,7 +20,7 @@ jobs:
       - name: Zip docker files
         run: |
           cd ${{ github.workspace }}
-          tar -cf archive.tar ${{ github.workspace }}/docker-compose.yml ${{ github.workspace }}/docker-compose.prod.yml
+          tar -cf archive.tar docker-compose.yml docker-compose.prod.yml
       - name: Copy config via ssh
         uses: appleboy/scp-action@master
         with:
