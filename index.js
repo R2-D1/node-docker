@@ -21,7 +21,7 @@ app.enable('trust proxy');
 app.use(cors({}));
 
 app.get('/api/v1', (req, res) => {
-   res.send('<h1>Hi there test 0102 test last</h1>');
+   res.send('<h1>Hi there test 0102 test last</h1>' + MONGO_USERNAME + ' ' + MONGO_PASSWORD);
    console.log('yeah it ran');
 });
 
