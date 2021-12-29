@@ -12,14 +12,14 @@ services:
     build: .
     image: r2d1/node-app
     env_file:
-      - .env
+      - ./.env
     depends_on:
       - mongo
 
   mongo:
     image: mongo:4.4
     env_file:
-      - .env
+      - ./.env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
