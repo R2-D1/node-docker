@@ -40,6 +40,7 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT_PATH }}
             tar -xf archive.tar
+            rm archive.tar
             docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app
             docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps node-app
 

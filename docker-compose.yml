@@ -15,14 +15,10 @@ services:
       - ./.env
     depends_on:
       - mongo
-
   mongo:
     image: mongo:4.4
     env_file:
       - ./.env
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     volumes:
       - mongo-db:/data/db
 volumes:
